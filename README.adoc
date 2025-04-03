@@ -12,13 +12,13 @@ It includes:
 
 == Commands
 
+- `make build`: Compiles Antora Docs.
 - `make install`: Builds the Dockerfile.
 - `make server`: Starts a new server for the html version. (requires python3).
-- `make build`: Compiles Antora Docs.
 
 == License
 
-Created with ❤️ by https://ninjas.cl[Camilo Castro] and https://github.com/ninjascl/asciidoc-book-template/graphs/contributors[contributors]footnote:[https://github.com/ninjascl/asciidoc-book-template/graphs/contributors]. for https://ninjas.cl[Ninjas.cl]{fn-ninjas}.
+Created with ❤️ by https://ninjas.cl[Camilo Castro] and https://github.com/NinjasCL/antora-docs-bootstrap/graphs/contributors[contributors]footnote:[https://github.com/NinjasCL/antora-docs-bootstrap/graphs/contributors]. for https://ninjas.cl[Ninjas.cl]{fn-ninjas}.
 
 This document is licensed with http://creativecommons.org/licenses/by-nc-sa/4.0/[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International]footnote:[http://creativecommons.org/licenses/by-nc-sa/4.0/]
 
