@@ -22,7 +22,7 @@ Created with ❤️ by https://ninjas.cl[Camilo Castro] and https://github.com/N
 
 This document is licensed with http://creativecommons.org/licenses/by-nc-sa/4.0/[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International]footnote:[http://creativecommons.org/licenses/by-nc-sa/4.0/]
 
-http://creativecommons.org/licenses/by-nc-sa/4.0/[image:resources/images/by-nc-sa.svg[Licencia Creative Commons]]
+http://creativecommons.org/licenses/by-nc-sa/4.0/[image:https://raw.githubusercontent.com/NinjasCL/asciidoc-book-template/main/resources/images/by-nc-sa.svg[Licencia Creative Commons]]
 
 Source code licensed with https://opensource.org/licenses/BSD-2-Clause[BSD-2]footnote:[https://opensource.org/licenses/BSD-2-Clause].
 
