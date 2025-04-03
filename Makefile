@@ -1,6 +1,6 @@
 .PHONY: install build server
 BUILD=podman
-CONTAINER_LABEL=local/antora:elixir-fullstack
+CONTAINER_LABEL=local/antora:example-docs
 
 install i:
 	${BUILD} build -t ${CONTAINER_LABEL} .
