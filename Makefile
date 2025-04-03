@@ -8,6 +8,7 @@ install i:
 build b:
 	@rm -rf docs/
 	${BUILD} run -u $(id -u):$(id -g) -v .:/antora:z --rm -t ${CONTAINER_LABEL} antora-playbook.yml
+	@touch docs/.nojekyll
 
 server s:
 	@make build
