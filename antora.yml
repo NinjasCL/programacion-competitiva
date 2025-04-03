@@ -1,0 +1,5 @@
+name: ROOT
+version: ~
+title: Elixir Fullstack
+nav:
+  - modules/ROOT/nav.adoc
