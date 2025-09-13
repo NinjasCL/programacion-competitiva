@@ -1,0 +1,4 @@
+.Tips
+* xref:manual-debugging.adoc[]
+* xref:big-o-notation.adoc[]
+* xref:binary-search-answer.adoc[]

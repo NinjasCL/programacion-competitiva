@@ -1,0 +1,30 @@
+= New Year and Hurry
+
+- Límite de tiempo por prueba: 1 segundo.
+- Límite de memoria por prueba: 256 megabytes.
+- https://codeforces.com/problemset/problem/750/A[Código Original].
+- Fecha: 13/09/2025.
+- Dificultad: 🍰 (800)
+- Tags: binary search, brute force, implementation, math
+
+Limak va a participar en un concurso el último día de 2016. El concurso empezará a las _20:00_ y durará *cuatro horas*, exactamente hasta la medianoche. Habrá asciimath:[n] problemas, ordenados por dificultad, es decir, el problema asciimath:[1] es el más fácil y el problema asciimath:[n] es el más difícil. Limak sabe que le tomará asciimath:[5·i] minutos resolver el problema asciimath:[i]-ésimo.
+
+Los amigos de Limak organizan una fiesta de Año Nuevo y él quiere llegar a la fiesta a la medianoche o antes. Necesita asciimath:[k] minutos para llegar desde su casa, donde participará en el concurso primero.
+
+La pregunta es: ¿Cuántos problemas puede resolver Limak si quiere llegar a la fiesta a tiempo?
+
+
+== Solución O(n) en C++
+
+[source, cpp]
+----
+include::example$750a-new-year-hurry/solution-o(n).cpp[]
+----
+
+
+== Solución O(1) en C++
+
+[source, cpp]
+----
+include::example$750a-new-year-hurry/solution-o(1).cpp[]
+----

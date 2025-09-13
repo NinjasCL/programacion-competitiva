@@ -1,0 +1,59 @@
+= Watermelon
+
+- Límite de tiempo por prueba: 1 segundo.
+- Límite de memoria por prueba: 64 megabytes.
+- https://codeforces.com/problemset/problem/4/A[Código Original].
+- Fecha: 30/08/2025.
+- Dificultad: 🍰 (800)
+- Tags: brute force, math
+
+*Ejercicio*
+
+Un caluroso día de verano, Pete y su amigo Billy decidieron comprar una sandía. Eligieron la más grande y madura, en su opinión. Después de eso, la sandía fue pesada y la balanza marcó w kilos. Corrieron a casa, muriéndose de sed, y decidieron dividir la fruta, sin embargo, se enfrentaron a un problema difícil.
+
+Pete y Billy son grandes fanáticos de los números pares, por eso quieren dividir la sandía de tal manera que cada una de las dos partes pese un número par de kilos, aunque no es obligatorio que las partes sean iguales. Los chicos están extremadamente cansados y quieren empezar a comer cuanto antes, por eso debes ayudarlos y descubrir si pueden dividir la sandía como ellos desean. Por supuesto, cada uno debe obtener una parte con peso positivo.
+
+*Entrada*
+
+La primera (y única) línea de entrada contiene un número entero w (`1 ≤ w ≤ 100`) — el peso de la sandía que los chicos compraron.
+
+*Salida*
+
+Imprime YES, si los chicos pueden dividir la sandía en dos partes, cada una de ellas con un peso par; e NO en caso contrario.
+
+*Ejemplo*
+
+|====
+|Input | Output
+
+| 8 | YES
+|====
+
+Por ejemplo, los chicos pueden dividir la sandía en dos partes de 2 y 6 kilos respectivamente (otra variante — dos partes de 4 y 4 kilos).
+
+== Solución
+
+Para esta solución solo debemos saber si el número es par. 
+Pero para mayor eficiencia no utilizamos la operación módulo (`numero % 2 == 0`).
+Si no que usamos una operación `bitwise AND`. Ésta operación retornara 0 si el número es par y 1 si el número es impar. Todos los números par tienen 0 en su bit menos significativo (LSB).
+
+También debemos estar atentos a que si la sandía pesa 2 kilos. Esta nose puede 
+dividir en trozos de peso par. Esto quiere decir que nuestro algoritmo es:
+
+La sandía pesa un número par mayor a 2 kg.
+
+Si la sandía pesa un número impar, es imposible que tenga dos trozos de peso par. Por ejemplo 7, puede tener un número par 2 y el otro será 5 que es impar.
+
+== Solución O(1) en C++
+
+[source, cpp]
+----
+include::example$4a-watermelon/solution.cpp[]
+----
+
+== Solución O(1) en Python
+
+[source, python]
+----
+include::example$4a-watermelon/solution.py[]
+----

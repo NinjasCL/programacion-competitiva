@@ -1,141 +1,66 @@
-= Welcome!
-:navtitle: Welcome
+= Programación Competitiva
 
-Example using _UML_ and _Emoji_.
+Algunos ejercicios de programación competitiva resueltos
+en _Python_ y _C++_. Además de recursos y tips para poder resolverlos.
 
-emoji:bear[5x]
+== ¿Por qué Python y C++?
 
+Python puede ser usado como pseudocódigo
+y poder elaborar una solución inicial en papel o lenguaje de prototipado rápido.
 
-[plantuml]
-----
-@startuml
-	Class01 <|-- Class02
-	Class03 *-- Class04
-	Class05 o-- Class06
-	Class07 .. Class08
-	Class09 -- Class10
-@enduml
-----
+C++ es el lenguaje más apropiado para entregar las soluciones finales
+y cumplir tanto con las restricciones de tiempo y memoria.
 
-[source, js]
-----
-// File: app.js
-const User = ({
-    username:'clsource'
-});
-----
+== ¿Por qué practicar programación competitiva?
 
-[dbml]
-----
-Table users {
-  id integer
-  username varchar
-  role varchar
-  created_at timestamp
-}
+Principalmente por que ayudan en el desarrollo de la lógica y matemática
+y permiten practicar para ejercicios de entrevistas laborales.
 
-Table posts {
-  id integer [primary key]
-  title varchar
-  body text [note: 'Content of the post']
-  user_id integer
-  status post_status
-  created_at timestamp
-}
+Finalmente por que aprender de algoritmos, estructuras de datos y lógica
+matemática son conceptos fundamentales para todo adepto a la informática.
 
-Enum post_status {
-  draft
-  published
-  private [note: 'visible via URL only']
-}
+== Dificultades
 
-Ref: posts.user_id > users.id // many-to-one
-----
+Los problemas se pueden clasificar según su dificultad.
+Para facilitar la interpretación se asociaron emojis según la dificultad.
 
-[vegalite]
-----
-{
-  "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
-  "description": "A simple bar chart with embedded data.",
-  "data": {
-    "values": [
-      {"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43},
-      {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53},
-      {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}
-    ]
-  },
-  "mark": "bar",
-  "encoding": {
-    "x": {"field": "a", "type": "ordinal"},
-    "y": {"field": "b", "type": "quantitative"}
-  }
-}
-----
-
-== Asciimath using explicit block and macro names
-:stem: latexmath
-:a: a
-:b: b
-:sqroot: sqrt
-:expr: sqrt(9) = 3
-
-== Configuration
-
-* The `:stem:` attribute in the document header specifies latexmath.
-* In these examples, use of asciimath is signaled using the explicit '`asciimath`' block and macro name notation.
-
-== Examples
-
-=== Asciimath block
-
-A matrix followed by some square roots can be written as 
-
-[asciimath]
-++++
-[[a,b],[c,d]]((n),(k))
-sqrt(4) = 2
-sqrt(9) = 3
-++++
-
-=== Inline in a paragraph
-
-Some text might suddenly need to show some matrix calculations, such as asciimath:[[[a,b\],[c,d\]\]((n),(k))].
-
-=== Inline, using attribute substitution
-
-If you are not interested in exciting formulae such as asciimath:a[[[{a},{b}\],[c,d\]\]((n),(k))], perhaps you would find the more mundane asciimath:a[{sqroot}(4) = 2] or even asciimath:a[{expr}] more to your taste.
-
-=== Lists
-
-
-* A matrix can be written as asciimath:[[[a,b\],[c,d\]\]((n),(k))].
-** A square root looks like asciimath:[sqrt(4) = 2]
-* Another square root looks like asciimath:[sqrt(9) = 3]
-
-=== Section headings
-
-== A matrix can be written as asciimath:[[[a,b\],[c,d\]\]((n),(k))].
-
-=== A square root looks like asciimath:[sqrt(4) = 2].
-
-==== Another square root looks like asciimath:[sqrt(9) = 3].
-
-=== Tables
-
-
-.Math Table
-[cols="3*",options="header,footer"]
+.Dificultades y emojis
 |===
-|Header matrix: asciimath:[[[a,b\],[c,d\]\]((n),(k))]
-|Header square root: asciimath:[sqrt(4) = 2]
-|Header square root: asciimath:[sqrt(9) = 3]
+| Emoji | Dificultad | Interpretación
 
-|A matrix can be written as asciimath:[[[a,b\],[c,d\]\]((n),(k))].
-|A square root looks like asciimath:[sqrt(4) = 2]
-|Another square root looks like asciimath:[sqrt(9) = 3]
-
-|Footer matrix: asciimath:[[[a,b\],[c,d\]\]((n),(k))]
-|Footer square root: asciimath:[sqrt(4) = 2]
-|Footer square root: asciimath:[sqrt(9) = 3]
-
+| 🍰 | 0 - 800 | Ejercicios de dificultad baja.
+| 🤓 | 900 - 1800 | Ejercicios de dificultad mediana.
+| 🤯 | 1900 - 2900 | Ejercicios de dificultad alta.
+| ☠️ | 3000 - 3400 | Ejercicios de dificultad extrema.
+| 👹 | 3500+ | Ejercicios de dificultad demoniaca.
 |===
+
+.Tags
+|====
+| Tags | Interpretación
+
+| math, combinatorics, number theory | El ejercicio puede ser resuelto usando fórmulas matemáticas, lógica, teoría de números o estadísticas.
+| binary search | El ejercicio puede ser resuelto usando https://codeforces.com/blog/entry/143038[búsqueda binaria en la respuesta].
+| brute force | El ejercicio puede ser resuelto con fuerza bruta (considerando todos los posibles casos).
+| greedy | El ejercicio puede ser resuelto con estrategias greedy.
+| implementation | El ejercicio es simple de entender y resolver. Pero dentro de la implementacion esta el desafio (puede haber casos borde o gran cantidad de datos).
+|====
+
+== Recursos
+
+- https://codeforces.com[Code Forces]. Principal fuente de problemas y evaluador de soluciones.
+
+- https://www.buscalibre.cl/libro-grokking-algorithms-second-edition/9781633438538/p/55853430[Libro Grokking Algorithms] (ISBN: 9781633438538). Libro con información valiosa para entender algoritmos y estructuras de datos.
+
+- https://uchile.progcomp.cl/apunte/prologo/introduccion/[Programación Competitiva Universidad de Chile].
+
+- https://cipc.progcomp.cl/[Campamento de Programacion Competitiva UTFSM].
+
+- https://onecompiler.com/[One Compiler]. Permite compilar código en Python y C++ de forma online y rápida.
+
+== Requisitos ICPC
+
+Para los universitarios que deseen participar en las competencias
+de la https://icpc.global/[ICPC] tienen que tener máximo 23 años y máximo cinco años de carrera cursados.
+
+- asciimath:["Año Nacimiento Máximo" = "Año Actual" - 23]

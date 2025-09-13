@@ -1,5 +1,7 @@
 name: ROOT
 version: ~
-title: Example Documentation
+title: Programación Competitiva
 nav:
   - modules/ROOT/nav.adoc
+  - modules/tips/nav.adoc
+  - modules/solved/nav.adoc

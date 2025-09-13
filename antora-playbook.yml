@@ -1,6 +1,6 @@
 site:
-  title: Example Documentation
-  url: https://ninjascl.github.io/antora-docs-bootstrap
+  title: Programación Competitiva
+  url: https://ninjascl.github.io/programacion-competitiva
   start_page: "ROOT::index.adoc"
 
 content:

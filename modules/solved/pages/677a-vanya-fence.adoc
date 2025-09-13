@@ -1,0 +1,98 @@
+= Vanya and Fence
+
+- Límite de tiempo por prueba: 1 segundo.
+- Límite de memoria por prueba: 256 megabytes.
+- https://codeforces.com/problemset/problem/677/A[Original].
+- Fecha: 30/08/2025.
+- Dificultad: 🍰 (800)
+- Tags: implementation
+
+Vanya y sus amigos están caminando junto a una cerca de altura asciimath:[h] y no quieren que el guardia los note. Para lograr esto, la altura de cada amigo no debe superar asciimath:[h]. Si la altura de alguna persona es mayor que asciimath:[h], puede agacharse y de esa manera seguro que el guardia no la notará. La altura de la i-ésima persona es igual a asciimath:[a_i].
+
+Consideremos que el ancho de una persona que camina normalmente es igual a asciimath:[1], mientras que el ancho de una persona agachada es igual a asciimath:[2]. Los amigos quieren hablar entre ellos mientras caminan, por lo que desean hacerlo en una sola fila. 
+
+¿Cuál es el ancho mínimo del camino para que los amigos puedan caminar en fila y no llamar la atención del guardia?
+
+*Entrada*
+
+La primera línea contiene dos enteros asciimath:[n] y asciimath:[h] (asciimath:[1 ≤ n ≤ 1000, 1 ≤ h ≤ 1000]) — el número de amigos y la altura de la cerca, respectivamente.
+
+La segunda línea contiene asciimath:[n] enteros asciimath:[a_i] (asciimath:[1 ≤ a_i ≤ 2h]), donde el i-ésimo es la altura del i-ésimo amigo.
+
+*Salida*
+
+Imprime un solo entero — el ancho mínimo posible válido del camino.
+
+*Ejemplo*
+
+|====
+|Input | Output
+
+a| 
+[source, text]
+----
+3 7
+4 5 14 
+----
+| 4
+
+a| 
+[source, text]
+----
+6 1
+1 1 1 1 1 1
+----
+| 6
+
+a| 
+[source, text]
+----
+6 5
+7 6 8 9 10 5
+----
+| 11
+
+|====
+
+En el primer ejemplo, solo la persona número 3 debe agacharse, por lo que el ancho requerido es igual a asciimath:[1 + 1 + 2 = 4].
+
+En el segundo ejemplo, todos los amigos son lo suficientemente bajos y nadie tiene que agacharse, por lo que el ancho asciimath:[1 + 1 + 1 + 1 + 1 + 1 = 6] es suficiente.
+
+En el tercer ejemplo, todas las personas deben agacharse, excepto la última. El ancho mínimo requerido del camino es igual a asciimath:[2 + 2 + 2 + 2 + 2 + 1 = 11].
+
+== Solución
+
+La solución consiste en recorrer la altura de cada amigo
+y sumar 2 si es más alto que la cerca, caso contrario sumar 1.
+
+[source, c]
+----
+total = 0
+if (altura > cerca) {
+    total += 2
+} else {
+    total += 1
+}
+----
+
+Sin embargo esto no es una solución elegante que minimiza las operaciones a realizar.
+En primer lugar se sabe que la anchura total no puede ser menor a la cantidad de amigos. Es decir, como mínimo tendremos la sumatoria de 1 por cada amigo.
+Si un amigo es más alto que la cerca, solo añade 1 adicional, por que ya está considerado su altura base.
+
+Entonces la solución consiste en recorrer la lista de amigos
+y sumar 1 al total si la altura del amigo es mayor a la de la cerca.
+
+
+== Solución O(n) en C++ 
+
+[source, cpp]
+----
+include::example$677a-vanya-fence/solution.cpp[]
+----
+
+== Solución O(n) en Python
+
+[source, python]
+----
+include::example$677a-vanya-fence/solution.py[]
+----

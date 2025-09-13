@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Watermelon :: Programación Competitiva</title>
+    <link rel="canonical" href="https://ninjascl.github.io/programacion-competitiva/solved/4a-watermelon.html">
+    <link rel="prev" href="../tips/binary-search-answer.html">
+    <link rel="next" href="677a-vanya-fence.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+    <link rel="stylesheet" href="../_/js/vendor/styles/monokai.css">  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://ninjascl.github.io/programacion-competitiva">Programación Competitiva</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Buscar">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Programación Competitiva</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tips</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tips/manual-debugging.html">Depuración Manual</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tips/big-o-notation.html">Notación Big O</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../tips/binary-search-answer.html">Búsqueda Binaria en la Respuesta</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ejercicios Resueltos</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="4a-watermelon.html">Watermelon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="677a-vanya-fence.html">Vanya and Fence</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="750a-new-year-hurry.html">New Year and Hurry</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Programación Competitiva</span>
+    <span class="version"></span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Programación Competitiva</a></div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Programación Competitiva</a></li>
+    <li>Ejercicios Resueltos</li>
+    <li><a href="4a-watermelon.html">Watermelon</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/solved/pages/4a-watermelon.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contenidos" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Watermelon</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Límite de tiempo por prueba: 1 segundo.</p>
+</li>
+<li>
+<p>Límite de memoria por prueba: 64 megabytes.</p>
+</li>
+<li>
+<p><a href="https://codeforces.com/problemset/problem/4/A">Código Original</a>.</p>
+</li>
+<li>
+<p>Fecha: 30/08/2025.</p>
+</li>
+<li>
+<p>Dificultad: 🍰 (800)</p>
+</li>
+<li>
+<p>Tags: brute force, math</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Ejercicio</strong></p>
+</div>
+<div class="paragraph">
+<p>Un caluroso día de verano, Pete y su amigo Billy decidieron comprar una sandía. Eligieron la más grande y madura, en su opinión. Después de eso, la sandía fue pesada y la balanza marcó w kilos. Corrieron a casa, muriéndose de sed, y decidieron dividir la fruta, sin embargo, se enfrentaron a un problema difícil.</p>
+</div>
+<div class="paragraph">
+<p>Pete y Billy son grandes fanáticos de los números pares, por eso quieren dividir la sandía de tal manera que cada una de las dos partes pese un número par de kilos, aunque no es obligatorio que las partes sean iguales. Los chicos están extremadamente cansados y quieren empezar a comer cuanto antes, por eso debes ayudarlos y descubrir si pueden dividir la sandía como ellos desean. Por supuesto, cada uno debe obtener una parte con peso positivo.</p>
+</div>
+<div class="paragraph">
+<p><strong>Entrada</strong></p>
+</div>
+<div class="paragraph">
+<p>La primera (y única) línea de entrada contiene un número entero w (<code>1 ≤ w ≤ 100</code>) — el peso de la sandía que los chicos compraron.</p>
+</div>
+<div class="paragraph">
+<p><strong>Salida</strong></p>
+</div>
+<div class="paragraph">
+<p>Imprime YES, si los chicos pueden dividir la sandía en dos partes, cada una de ellas con un peso par; e NO en caso contrario.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ejemplo</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Input</th>
+<th class="tableblock halign-left valign-top">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Por ejemplo, los chicos pueden dividir la sandía en dos partes de 2 y 6 kilos respectivamente (otra variante — dos partes de 4 y 4 kilos).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="solución"><a class="anchor" href="#solución"></a>Solución</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para esta solución solo debemos saber si el número es par.
+Pero para mayor eficiencia no utilizamos la operación módulo (<code>numero % 2 == 0</code>).
+Si no que usamos una operación <code>bitwise AND</code>. Ésta operación retornara 0 si el número es par y 1 si el número es impar. Todos los números par tienen 0 en su bit menos significativo (LSB).</p>
+</div>
+<div class="paragraph">
+<p>También debemos estar atentos a que si la sandía pesa 2 kilos. Esta nose puede
+dividir en trozos de peso par. Esto quiere decir que nuestro algoritmo es:</p>
+</div>
+<div class="paragraph">
+<p>La sandía pesa un número par mayor a 2 kg.</p>
+</div>
+<div class="paragraph">
+<p>Si la sandía pesa un número impar, es imposible que tenga dos trozos de peso par. Por ejemplo 7, puede tener un número par 2 y el otro será 5 que es impar.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="solución-o1-en-c"><a class="anchor" href="#solución-o1-en-c"></a>Solución O(1) en C++</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cpp hljs" data-lang="cpp">// g++ solution.cpp -o solution
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+    int kg;
+    cin &gt;&gt; kg;
+    cout &lt;&lt; (((kg &amp; 1) == 1 || kg == 2) ? "NO" : "YES") &lt;&lt; endl;
+    return 0;
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="solución-o1-en-python"><a class="anchor" href="#solución-o1-en-python"></a>Solución O(1) en Python</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python"># python3 solution.py
+kg = int(input())
+print("NO" if kg &amp; 1 == 1 or kg == 2 else "YES")</code></pre>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../tips/binary-search-answer.html">Búsqueda Binaria en la Respuesta</a></span>
+  <span class="next"><a href="677a-vanya-fence.html">Vanya and Fence</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>
