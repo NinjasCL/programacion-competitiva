@@ -1,4 +1,4 @@
-// g++ solution.cpp -o solution
+// g++ solution-o(1).cpp -o solution
 // by: Marcelo Guzman 13/09/2025
 #include <iostream>
 #include <cmath>

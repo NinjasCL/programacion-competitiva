@@ -1,0 +1,27 @@
+= Tipos de Desafíos
+
+Dentro de las competencias hay distintas formas de presentar y elaborar
+los desafíos.
+
+- Fuente: https://codeforces.com/blog/entry/126310
+
+== Ruso (Observación)
+
+Los ejercicios del tipo _Ruso_ se concentran principalmente en
+problemas que pueden ser resueltos utilizando conocimiento de ciencias 
+básicas como lógica, álgebra, cálculo, aritmética, geometría, estadísticas, física y química. Por lo que se requiere una capacidad de observación superior, además de conocimientos en ciencias básicas superiores al promedio.
+
+- Ejemplo: https://acm.timus.ru/[Timus Problems].
+
+== Chino (Técnica)
+
+Los ejercicios del tipo _Chino_ se concentran principalmente en estructuras de datos avanzadas. Normalmente se recomienda tener un código referencia y estudios de algoritmos poco frecuentes para poder resolverlos. Es común que muchos participantes solamente se concentren en resolver este tipo de ejercicios, por lo que es recomendable dar énfasis a la aproximación _Rusa_ y _Norte Americana_ también.
+
+== Norte Americano (Implementación)
+
+Los ejercicios del tipo _USA_ se enfocan más en desafíos de implementación, sobre todo de geometría. Donde se puede comprender lo que se debe hacer, pero habrá casos borde o de una gran cantidad de datos, también puede que la implementación tarde mucho en ser programada por su extensión.
+
+Los desafíos _USA_ tienen principalmente dos categorías: 
+
+- El desafío tiene una implementación extensa, aunque no compleja.
+- El desafío tiene una implementación corta, pero con muchos casos borde que la hacen especialmente desafiante.

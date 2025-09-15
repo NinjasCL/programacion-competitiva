@@ -16,6 +16,8 @@ La pregunta es: ¿Cuántos problemas puede resolver Limak si quiere llegar a la 
 
 == Solución O(n) en C++
 
+Esta solución es de fuerza bruta. Probando todos los elementos posibles.
+
 [source, cpp]
 ----
 include::example$750a-new-year-hurry/solution-o(n).cpp[]
@@ -24,7 +26,83 @@ include::example$750a-new-year-hurry/solution-o(n).cpp[]
 
 == Solución O(1) en C++
 
+Esta solución utiliza las propiedades de las progresiones artiméticas
+para obtener el resultado.
+
 [source, cpp]
 ----
 include::example$750a-new-year-hurry/solution-o(1).cpp[]
+----
+
+== Solución O(logn) en Python
+
+La solución corresponde a encontrar la respuesta
+utilizando búsqueda binaria entre todo el espectro de candidatos posibles (técnica de Binary Search in answer).
+
+*Paso 1*
+
+Sabemos que el tiempo máximo será de 4 horas - el tiempo que tome llegar a la fiesta. Es decir asciimath:[240 - k] minutos (siendo asciimath:[240] los minutos que tiene 4 horas). 
+
+El desafío consiste en averiguar la cantidad máxima de problemas que se pueden resolver dentro del tiempo disponible.
+
+[source, python]
+----
+def main():
+    n, k = map(int, input().split())
+    available_time = 240 - k
+    print(find_max_quantity_of_solved_problems(n, available_time))
+
+if __name__ == "__main__":
+  main()
+----
+
+*Paso 2*
+
+Ahora se obtiene el máximo y el mínimo dentro de la función que aplicará la búsqueda binaria. Estos vienen siendo la cantidad de problemas posibles a resolver. Como mínimo resolveremos cero y como máximo la cantidad total de problemas.
+
+Notar que si el candidato es válido, tenemos que averiguar si el siguiente candidato es mejor (más problemas posibles a resolver).
+Por lo que debemos aumentar el límite mínimo. Caso contrario
+deberemos reducir el límite máximo.
+
+[source, python]
+----
+def find_max_quantity_of_solved_problems(total_problem_count, available_time):
+    low = 0
+    high = total_problem_count
+
+    answer = high
+
+    while low <= high:
+        candidate = low + (high - low) // 2
+
+        if candidate_is_valid(candidate, available_time):
+            answer = candidate
+            low = candidate + 1
+        else:
+            high = candidate - 1
+            
+    return answer
+----
+
+*Paso 3*
+
+Luego se define la función para validar el candidato. Si el tiempo total necesario para resolver la cantidad de problemas sugeridas por el candidato es menor al tiempo disponible, entonces es un candidato válido.
+El range de asciimath:[i] es mínimo es asciimath:[1] y máximo la cantidad de soluciones del candidato + una adicional para compensar el contador desde cero.
+
+[source, python]
+----
+def candidate_is_valid(quantity_to_solve, available_time):
+  used_time = 0
+  for i in range(1, quantity_to_solve + 1):
+    used_time += i * 5
+  return used_time <= available_time
+----
+
+*Solución*
+
+Juntando todo el código se tiene la siguiente solución.
+
+[source, python]
+----
+include::example$750a-new-year-hurry/solution-bs.py[]
 ----

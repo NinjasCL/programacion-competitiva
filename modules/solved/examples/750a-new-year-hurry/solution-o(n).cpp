@@ -1,4 +1,4 @@
-// g++ solution.cpp -o solution
+// g++ solution-o(n).cpp -o solution
 #include <iostream>
     
 using namespace std;

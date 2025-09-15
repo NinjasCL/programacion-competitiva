@@ -4,4 +4,5 @@ title: Programación Competitiva
 nav:
   - modules/ROOT/nav.adoc
   - modules/tips/nav.adoc
+  - modules/theory/nav.adoc
   - modules/solved/nav.adoc

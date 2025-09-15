@@ -1,5 +1,0 @@
-= Búsqueda Binaria en la Respuesta
-
-- Original: https://codeforces.com/blog/entry/143038
-
-

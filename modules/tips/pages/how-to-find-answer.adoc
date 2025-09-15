@@ -1,0 +1,198 @@
+= ¿Cómo encontrar la respuesta?
+
+Cada ejercicio puede tener múltiples formas de ser resuelto y
+encontrar la mejor solución puede tener distintos caminos.
+Lo importante es lograr encontrar la respuesta sin forzar un algoritmo, 
+es decir, que la respuesta sea encontrada intuitivamente según el análisis
+del enunciado y la experiencia personal, no simplemente elegir un algoritmo
+y ver si puede resolver el desafío.
+
+== Estrategia 1: ¿Se puede resolver con Búsqueda Binaria en la Respuesta?
+
+Esta es una estrategia que puede resolver un gran número de problemas. Normalmente
+la búsqueda binaria está asociada a un arreglo de elementos. Pero en numerosas ocasiones el problema no da una lista de elementos. Sin embargo, la lista de posibles candidatos (el espacio de solución) si es una lista ordenada (monotónica).
+Lo que significa que en vez de aplicar la búsqueda binaria dentro del problema, aplicamos búsqueda binaria entre todos los candidatos a solución, siendo el mejor candidato encontrado la respuesta.
+
+El aplicar la búsqueda binaria en la respuesta indica lo siguiente:
+
+- Se busca un candidato que este entre un límite superior y uno inferior (min, low, high).
+- Se verifica que el candidato es válido o no.
+- Dependiendo del estado del candidato se acorta los límites superior e inferior.
+- Se repite hasta encontrar el candidato correcto.
+
+Se puede aplicar esta técnica si el enunciado cumple las siguientes características:
+
+- El problema requiere encontrar un valor mínimo o máximo según una condición.
+- Se puede verificar que el candidato es viable o no de forma rápida y eficiente.
+- Evaluar la viabilidad es monotónico, quiere decir que si un valor asciimath:[x] es válido todos los valores superiores (o inferiores) a asciimath:[x] son válidos (o no).
+
+Ésta es una estrategia muy útil por que reduce problemas complicados a búsquedas binarias simples. Además de que evita utilizar estrategias greedy o dynamic programming. La búsqueda binaria es simple de implementar una vez que se ha detectado la monotónica de los posibles candidatos a solución. Si el rango
+de posibles soluciones es monotónico, quizás también se puede evaluar si la solución corresponde a una progresión arimética o geométrica.
+
+Para evaluar si un problema puede ser resuelto con búsqueda binaria se debe preguntar:
+
+- ¿Se puede validar rápidamente si un candidato es válido?
+- ¿El conjunto de candidatos válidos es continuo y ordenado (monotónico)?.
+
+Si se responde Sí a las anteriores preguntas, quizás utilizando búsqueda binaria en la respuesta es el mejor camino.
+
+=== Ejemplo
+
+*Enunciado del Problema*
+
+Tienes asciimath:[n] objetos, cada uno con un peso determinado. Se desea almacenarlos dentro de asciimath:[k] cajas.
+Cada caja puede almacenar hasta un máximo de peso. Encuentra el peso máximo más bajo que permita a todos los objetos
+ser almacenados dentro del total de cajas.
+
+- El input es una serie de pesos: 10, 20, 30, 40, 50
+- Seguido de la cantidad máxima de cajas: 3
+
+*Paso 1*
+
+Se debe determinar cuales son los límites donde la respuesta puede encontrarse. En este caso la respuesta puede estar dentro de un límite mínimo (objeto más pesado) y un máximo (peso total de todos los objetos dentro de una sola caja).
+
+- asciimath:["peso mínimo" = "peso del objeto más pesado"].
+- asciimath:["peso máximo" = "suma del peso de todos los objetos dentro de una caja"].
+
+*Paso 2*
+
+Se crea la función que verifica si el candidato es válido. Esta función tiene el parámetro candidato, que será
+nuestro elemento del medio (`mid`). Además tiene el parámetro de la lista de elementos y la cantidad total de cajas.
+El objetivo de la función de verificación es añadir elementos en un acumulador hasta cumplir una condición.
+En este caso el acumulador es el peso total de la caja.
+
+[source, python]
+----
+def candidate_is_valid(candidate, weigths, max_box_quantity):
+    box_count = 1
+    box_weight = 0
+
+    for weight in weights:
+
+        # El peso del objeto es mayor al candidato
+        # Por lo que se descarta automáticamente
+        if weight > candidate:
+            return False
+
+        # Si el peso de la caja sumado al peso del objeto
+        # Es menor o igual al candidato
+        # Entonces añadimos el objeto a la caja
+        if box_weight + weight <= candidate:
+            box_weight += weight
+        
+        # Caso contrario aumentamos la cantidad de cajas
+        # Y añadimos el peso del objeto a una nueva caja
+        else:
+            box_count += 1
+            box_weight = weight
+    
+    # La cantidad de cajas debe ser menor o igual al máximo posible
+    # Si es mayor quiere decir que el cantidado no es válido.
+    return box_count <= max_box_quantity
+----
+
+*Paso 3*
+
+Se aplica el algoritmo de búsqueda binaria dentro del espectro total de posibles soluciones (candidatos).
+
+[source, python]
+----
+def find_max_box_weight(weights, max_box_quantity):
+    # El objeto más pesado
+    low = max(weights)
+    
+    # El peso máximo que podría tener una caja
+    high = sum(weights) 
+    
+    # La respuesta inicial sería el peso máximo total
+    answer = high 
+
+    # Binary Search
+    while low <= high:
+        # Obtenemos el candidato como el valor medio entre 
+        # el mínimo y el máximo
+        mid = low + (high - low) // 2
+        # Evaluamos el candidato
+        # Y seguimos buscando hasta evaluar a
+        # todos los candidatos
+        if candidate_is_valid(mid, weights, max_box_quantity):
+            answer = mid
+            high = mid - 1
+        else:
+            low = mid + 1
+
+    return answer
+----
+
+*Resultado Final*
+
+[source, python]
+----
+def candidate_is_valid(candidate, weigths, max_box_quantity):
+    box_count = 1
+    box_weight = 0
+
+    for weight in weigths:
+
+        if weight > candidate:
+            return False
+
+        if box_weight + weight <= candidate:
+            box_weight += weight
+        else:
+            box_count += 1
+            box_weight = weight
+    
+    return box_count <= max_box_quantity
+
+def find_max_box_weight(weights, max_box_quantity):
+    low = max(weights)
+    high = sum(weights)
+    
+    answer = high
+    while low <= high:
+        mid = low + (high - low) // 2
+        if candidate_is_valid(mid, weights, max_box_quantity):
+            answer = mid
+            high = mid - 1
+        else:
+            low = mid + 1
+
+    return answer
+  
+def main():
+  weights = [10, 20, 30, 40, 50]
+  max_box_quantity = 3
+  print(find_max_box_weight(weights, max_box_quantity))
+
+if __name__ == "__main__":
+  main()
+----
+
+=== Enunciados comunes
+
+Algunos de los enunciados comunes que indican que se podría usar la búsqueda binaria en la respuesta
+son:
+
+- Ubicar una cantidad de elementos dentro de lugares específicos, minimizando la distancia máxima entre cada uno.
+- Distribuir elementos entre un grupo minimizando el tiempo máximo de espera.
+- Problemas de priorización donde se debe minimizar el tiempo máximo o capacidad.
+
+== Estrategia 2: ¿Puedo resolverlo con Greedy?
+
+== Estrategia 3: ¿Puedo resolverlo con Dynamic Programming?
+
+== Estrategia 4: ¿Se puede resolver con Descomposición por Raíz Cuadrada?
+
+== Tips
+
+
+== Referencias
+
+- https://codeforces.com/blog/entry/143038
+- https://codeforces.com/blog/entry/20548
+- https://codeforces.com/blog/entry/106346
+- https://codeforces.com/blog/entry/113785
+
+
+

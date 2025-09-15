@@ -151,6 +151,7 @@ que los exponenciales. Normalmente aparecen al necesitar calcular
 todas las permutaciones (*permutación*) de un conjunto de elementos.
 
 Algoritmos asciimath:[O(n!)]:
+
 - Búsqueda de fuerza bruta en el problema del vendedor ambulante (traveling salesman).
 - Generación de permutaciones en un conjunto parcialmente ordenado.
 - Encontrar el determinante con la expanción de _Laplace_.
