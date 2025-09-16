@@ -26,8 +26,94 @@ include::example$750a-new-year-hurry/solution-o(n).cpp[]
 
 == Solución O(1) en C++
 
-Esta solución utiliza las propiedades de las progresiones artiméticas
-para obtener el resultado.
+Para poder resolver este problema se debe pensar matemáticamente (Estilo _Ruso_).
+En primer lugar tenemos una progresión de términos que se deben sumar
+para obtener el tiempo total necesario para resolver la cantidad de problemas
+dado por asciimath:[n].
+
+Ejemplo: 
+
+- asciimath:[n = 3]
+- asciimath:["demora" = sum_(i=1)^n i*5 = 30]
+
+Entonces al tener una progresión de elementos que se deben sumar, se puede
+usar lo que se conoce como *progresión aritmética*.
+
+La *progresión aritmética* tiene dos fórmulas que pueden ser usadas
+dependiendo de la cantidad de información que se tenga disponible.
+
+- Se conoce el primer y último término de la progresión: asciimath:[S_n = n/2 * (a + l) ]
+- Solo se conoce el primer término de la progresión: asciimath:[S_n = n/2 * (2a + (n-1)d)]
+
+Según la información del enunciado se conoce los siguientes datos:
+
+- El tiempo disponible:  asciimath:[240 - k].
+- La cantidad total de problemas: asciimath:[n].
+
+Como la progresión tiene una fórmula constante de asciimath:[sum_(i=1)^n i*5]. Podemos calcular el primer
+y último término de la progresión. El primer término siempre será asciimath:[5], debido a que la cantidad
+de problemas siempre parte en asciimath:[1]. El último término siempre será asciimath:[n * 5], debido a que la cantidad
+máxima siempre será el total de problemas multiplicado por asciimath:[5].
+
+Por lo que la fórmula para calcular el total de tiempo dado un valor asciimath:[n] será: 
+
+asciimath:[S_n = (n * (5 + (n * 5)))/2]
+
+asciimath:[S_n = (5n + 5n^2)/2]
+
+Tenemos el valor que tomará resolver asciimath:[n] cantidad de problemas, sin embargo 
+debemos verificar que esto sea menor o igual al tiempo disponible. La pregunta a responder
+es: ¿Cuál es el valor de asciimath:[x] cantidad de problemas de modo que sea menor o igual al tiempo disponible?.
+
+
+asciimath:[S_n = (5x + 5x^2)/2 <= "disponible"] 
+
+Multiplicamos por asciimath:[2] en ambos lados
+
+asciimath:[S_n = (5x + 5x^2) <=  (2 * "disponible)"]
+
+
+asciimath:[S_n = 5 * (x + x^2) <=  (2 * "disponible")]
+
+asciimath:[S_n = x + x^2 <=  (2 * "disponible")/5]
+
+Como asciimath:["disponible"] es un valor constante, obtenemos una ecuación cuadrática.
+
+asciimath:[S_n = x^2 + x - (2 * "disponible")/5 <=  0]
+
+Solo necesitamos despejar asciimath:[x] con la fórmula de ecuación 
+cuadrática asciimath:[x=(-b +- sqrt(b^2 - 4ac))/(2a)].
+
+Siendo los siguientes los valores a reemplazar en la ecuación:
+
+- asciimath:[a = 1] (Coeficiente cuadrático asciimath:[x^2])
+- asciimath:[b = 1] (Coeficiente lineal asciimath:[x])
+- asciimath:[c = (2 * "disponible")/5] (Constante o término independiente).
+
+Por lo que la ecuación quedan dos posibles resultados.
+
+- Solución Positiva: asciimath:[x=(-1 + sqrt((-1)^2 - 4 * 1 * c))/(2*1)]
+- Solución Negativa: asciimath:[x=(-1 - sqrt((-1)^2 - 4 * 1 * c))/(2*1)]
+
+Como estamos contando minutos, estos no pueden ser negativos. Por lo que 
+solamente consideramos con la *Solución Positiva*.
+
+asciimath:[x=(-1 + sqrt((-1)^2 - 4 * 1 * c))/(2*1)]
+
+asciimath:[x=(-1 + sqrt(1 - 4c))/2]
+
+Reemplazamos asciimath:[c] por el valor "disponible"
+
+asciimath:[x=(-1 + sqrt(1 - 4 * ((2 * "disponible")/5)))/2]
+
+asciimath:[x=(-1 + sqrt(1 - (8 * "disponible")/5))/2]
+
+Finalmente, la solución no puede ser mayor a la cantidad máxima asciimath:[n] de ejercicios
+disponibles. Por lo que debemos aplicar una operación de límite máximo. Conocida como *clamp*
+o *abrazadera* (`clamp(x, min, max)`).
+
+asciimath:["respuesta" = min(max(x, 0), n)]
+
 
 [source, cpp]
 ----
