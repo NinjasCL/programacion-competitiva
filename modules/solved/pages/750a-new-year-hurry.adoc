@@ -29,7 +29,8 @@ include::example$750a-new-year-hurry/solution-o(n).cpp[]
 Para poder resolver este problema se debe pensar matemáticamente (Estilo _Ruso_).
 En primer lugar tenemos una progresión de términos que se deben sumar
 para obtener el tiempo total necesario para resolver la cantidad de problemas
-dado por asciimath:[n].
+dado por asciimath:[n]. Agradecimientos a _Marcelo Guzman (13/09/2025)_ por detallar el 
+análisis matemático.
 
 Ejemplo: 
 
@@ -88,7 +89,7 @@ Siendo los siguientes los valores a reemplazar en la ecuación:
 
 - asciimath:[a = 1] (Coeficiente cuadrático asciimath:[x^2])
 - asciimath:[b = 1] (Coeficiente lineal asciimath:[x])
-- asciimath:[c = (2 * "disponible")/5] (Constante o término independiente).
+- asciimath:[c = (-2 * "disponible")/5] (Constante o término independiente).
 
 Por lo que la ecuación quedan dos posibles resultados.
 
@@ -104,9 +105,9 @@ asciimath:[x=(-1 + sqrt(1 - 4c))/2]
 
 Reemplazamos asciimath:[c] por el valor "disponible"
 
-asciimath:[x=(-1 + sqrt(1 - 4 * ((2 * "disponible")/5)))/2]
+asciimath:[x=(-1 + sqrt(1 - 4 * ((-2 * "disponible")/5)))/2]
 
-asciimath:[x=(-1 + sqrt(1 - (8 * "disponible")/5))/2]
+asciimath:[x=(-1 + sqrt(1 + (8 * "disponible")/5))/2]
 
 Finalmente, la solución no puede ser mayor a la cantidad máxima asciimath:[n] de ejercicios
 disponibles. Por lo que debemos aplicar una operación de límite máximo. Conocida como *clamp*

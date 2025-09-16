@@ -1,21 +1,20 @@
 // g++ solution-o(1).cpp -o solution
-// by: Marcelo Guzman 13/09/2025
 #include <iostream>
 #include <cmath>
+#include <algorithm>
+
 using namespace std;
 
 int main() {
-    long long n, demora;
-    cin >> n >> demora;
+    int n, k, answer, available;
+    cin >> n >> k;
 
-    long long disponible = 240 - demora;
+    available = 240 - k;
 
-    long long problema = (-1.0 + sqrt(1.0 + (8.0 * disponible) / 5.0)) / 2.0;
-
-    if (problema > n) {
-      problema = n;
-    }
+    answer = (-1 + sqrt(1 + (8 * available) / 5)) / 2;
+    // also can be: clamp(answer, 0, n);
+    answer = min(max(answer, 0), n);
     
-    cout << problema << endl;
+    cout << answer << endl;
     return 0;
 }
