@@ -1,0 +1,86 @@
+= 2114A - A. Square Year
+
+- Límite de tiempo por prueba: 1 segundo.
+- Límite de memoria por prueba: 256 megabytes.
+- https://codeforces.com/problemset/problem/2114/A[Código Original].
+- Fecha: 16/09/2025.
+- Dificultad: 🍰 (800)
+- Tags: binary search, brute force, math
+
+Se puede notar el siguiente hecho matemático notable: el número asciimath:[2025] puede representarse como asciimath:[(20+25)^2].
+
+Se te da un año representado por una cadena asciimath:[s], que consta exactamente de *4* caracteres. Por lo tanto, se permiten ceros a la izquierda en la representación del año. Por ejemplo, asciimath:["0001"], asciimath:["0185"] y asciimath:["1375"] son representaciones válidas de años.
+
+Necesitas expresarlo en la forma asciimath:[(a + b)^2], donde asciimath:[a] y asciimath:[b] son enteros no negativos, o determinar que es imposible.
+
+Por ejemplo, si asciimath:[s = "0001"], puedes elegir asciimath:[a = 0], asciimath:[b = 1], y escribir el año como asciimath:[(0+1)^2 = 1].
+
+*Entrada*
+
+La primera línea de la entrada contiene un solo entero asciimath:[t] (asciimath:[1 ≤ t ≤ 10^4]): el número de casos de prueba.
+
+Las líneas siguientes describen los casos de prueba.
+
+La única línea de cada caso de prueba contiene una cadena asciimath:[s], que consta de exactamente *4* caracteres. Cada carácter es un dígito del asciimath:[0] al asciimath:[9].
+
+*Salida*
+
+En una línea separada para cada caso de prueba, imprime:
+
+- Dos números asciimath:[a] y asciimath:[b] (asciimath:[a, b ≥ 0]) tales que asciimath:[(a + b)^2 = s], si existen. 
+- Si hay múltiples pares adecuados, puedes imprimir cualquiera de ellos. asciimath:[-1] de lo contrario.
+
+*Ejemplo*
+
+|====
+|Input | Output
+
+a| 
+[source, text]
+----
+5
+0001
+1001
+1000
+4900
+2025
+----
+a|
+[source, text]
+----
+0 1
+-1
+-1
+34 36
+20 25
+----
+
+|====
+
+== Solución O(1) en Python
+
+Para esta solución utilizando matemáticas (Estilo Ruso) simplemente debemos
+despejar los valores de asciimath:[a] y asciimath:[b] para que se cumpla la ecuación
+asciimath:[(a + b)^2 = "año"].
+
+El ejercicio nos pide cualquier tipo de suma de valores, simplemente debe haber un par 
+números que cumplan la ecuación. Si asumimos que el valor de asciimath:[a = 0] simplificamos la ecuación a 
+
+asciimath:[b^2 = "año"]. 
+
+Entonces podemos obtener el valor de asciimath:[b] con:
+
+asciimath:[b = sqrt("año")]. 
+
+Esto nos permitirá saber el valor de asciimath:[b], pero estamos trabajando solo con números enteros, 
+por lo que se pierde precisión si la raíz del año es un número con decimales. Estos nos obliga a verificar el valor de asciimath:[b] y que deba ser igual al año si lo elevamos al cuadrado.
+
+Es decir se debe cumplir lo siguiente: asciimath:[b^2 = "año" == b = sqrt("año")].
+
+Una vez obtenidos estos valores, solamente queda mostrar el par asciimath:[(0, b)] y asciimath:[-1]
+si no se encuentra un valor de asciimath:[b] que cumpla la restricción.
+
+[source, python]
+----
+include::example$2114a-square-year/solution-o(1).py[]
+----

@@ -1,4 +1,4 @@
-= New Year and Hurry
+= 750A - New Year and Hurry
 
 - Límite de tiempo por prueba: 1 segundo.
 - Límite de memoria por prueba: 256 megabytes.
@@ -13,6 +13,41 @@ Los amigos de Limak organizan una fiesta de Año Nuevo y él quiere llegar a la 
 
 La pregunta es: ¿Cuántos problemas puede resolver Limak si quiere llegar a la fiesta a tiempo?
 
+*Entrada*
+
+Los parámetros de entrada son dos enteros asciimath:[n] y asciimath:[k] (asciimath:[1 ≤ n ≤ 10], asciimath:[1 ≤ k ≤ 240]): el número de problemas en el concurso y la cantidad de minutos que Limak necesita para llegar a la fiesta desde su casa.
+
+*Salida*
+
+Imprime un entero, que representa el número máximo posible de problemas que Limak puede resolver para poder llegar a la fiesta a medianoche o antes.
+
+*Ejemplo*
+
+|====
+|Input | Output
+
+a| 
+[source, text]
+----
+3 222
+----
+| 2
+
+a| 
+[source, text]
+----
+4 190
+----
+| 4
+
+a| 
+[source, text]
+----
+7 1
+----
+| 7
+
+|====
 
 == Solución O(n) en C++
 
@@ -66,10 +101,9 @@ Tenemos el valor que tomará resolver asciimath:[n] cantidad de problemas, sin e
 debemos verificar que esto sea menor o igual al tiempo disponible. La pregunta a responder
 es: ¿Cuál es el valor de asciimath:[x] cantidad de problemas de modo que sea menor o igual al tiempo disponible?.
 
-
 asciimath:[S_n = (5x + 5x^2)/2 <= "disponible"] 
 
-Multiplicamos por asciimath:[2] en ambos lados
+Desarrollamos la ecuación.
 
 asciimath:[S_n = (5x + 5x^2) <=  (2 * "disponible)"]
 

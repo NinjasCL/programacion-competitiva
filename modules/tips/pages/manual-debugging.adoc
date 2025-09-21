@@ -1,2 +1,50 @@
 = Depuración Manual
 
+En la programación competitiva se priorizan las soluciones
+que requieren menor cantidad de memoria y se ejecuten en un tiempo limitado.
+
+Sin embargo por la cantidad de envíos rechazados se puede definir un desempate.
+Es por esto que se recomienda que el código enviado tenga la menor
+cantidad de rechazos posible.
+
+Entonces para verificar que la implementación cubre todos los casos
+borde antes de ser enviada, se puede usar la estrategia de depuración manual.
+
+La cual consiste en que la persona "simule" ser un compilador e intérprete del código, 
+evaluando instrucción por instrucción y anotando sus resultados en una tabla. 
+Las herramientas para esto son papel y lápiz, quizás una calculadora.
+
+*Ejemplo*
+
+El siguiente ejemplo permite demostrar el uso de la depuración manual.
+En este simple programa se crea una palabra uniendo las letras almacenadas
+en un arreglo.
+
+.Unir letras
+[source, python]
+----
+palabra = ""
+abecedario = ["a", "b", "c"]
+
+for letra in abecedario:
+  palabra += letra
+
+print(palabra)
+----
+
+Analizamos el bucle utilizando la depuración manual.
+Para cada iteración del bucle `for` se añade un elemento en la tabla.
+La iteración `0` corresponde a los valores iniciales de cada variable.
+
+.Tabla de Depuración
+|====
+| Iteración | letra | palabra
+| 0 | "a" | ""
+| 1 | "a" | "a"
+| 2 | "b" | "ab"
+| 3 | "c" | "abc"
+|====
+
+Gracias a esto se puede descubrir problemas en los algoritmos, 
+sobre todo cuando hay casos borde que solo se gatillan con valores
+específicos de las variables.

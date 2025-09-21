@@ -1,4 +1,4 @@
-= Vanya and Fence
+= 677A - Vanya and Fence
 
 - Límite de tiempo por prueba: 1 segundo.
 - Límite de memoria por prueba: 256 megabytes.

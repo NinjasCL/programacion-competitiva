@@ -5,11 +5,23 @@ en _Python_ y _C++_. Además de recursos y tips para poder resolverlos.
 
 == ¿Por qué Python y C++?
 
+La competencia oficial de _ICPC Chile_ se permiten 
+las siguientes alternativas: C, C++, Java, Python, Kotlin.
+
+Las alternativas de Java y Kotlin tienden a ser más veloces que Python, 
+sin embargo requieren de más escritura de código, además de uso de orientación
+a objetos, lo cual puede complicar ciertas soluciones.
+
 Python puede ser usado como pseudocódigo
 y poder elaborar una solución inicial en papel o lenguaje de prototipado rápido.
+Puede ser usado para entregar la solución final, pero no hay garantías
+de que la solución esté dentro de las restricciones de tiempo y memoria, como
+lo son Java y C++.
 
 C++ es el lenguaje más apropiado para entregar las soluciones finales
-y cumplir tanto con las restricciones de tiempo y memoria.
+y cumplir tanto con las restricciones de tiempo y memoria. También
+podría ser C, pero C++ ofrece bibliotecas adicionales que facilitarían
+la obtención de las soluciones.
 
 == ¿Por qué practicar programación competitiva?
 
@@ -61,6 +73,9 @@ Para facilitar la interpretación se asociaron emojis según la dificultad.
 == Requisitos ICPC
 
 Para los universitarios que deseen participar en las competencias
-de la https://icpc.global/[ICPC] tienen que tener máximo 23 años y máximo cinco años de carrera cursados.
+de la https://icpc.global/regionals/finder/TCP[ICPC Chile] tienen que tener máximo 23 años y máximo cinco años de carrera cursados.
 
 - asciimath:["Año Nacimiento Máximo" = "Año Actual" - 23]
+
+Normalmente la competencia de clasificación al mundial se hace en Noviembre, 
+con un pequeño torneo de preparación en Octubre.

@@ -7,7 +7,13 @@ es decir, que la respuesta sea encontrada intuitivamente según el análisis
 del enunciado y la experiencia personal, no simplemente elegir un algoritmo
 y ver si puede resolver el desafío.
 
-== Estrategia 1: ¿Se puede resolver con Búsqueda Binaria en la Respuesta?
+== ¿Se puede resolver con matemáticas?
+
+Muchos ejercicios se pueden resolver utilizando principios matemáticos, 
+por lo que si se ve como una ecuación y el problema tiene un "Estilo Ruso",
+se puede encontrar una respuesta apropiada solo usando propiedades matemáticas y algebráicas.
+
+== ¿Se puede resolver con Búsqueda Binaria en la Respuesta?
 
 Esta es una estrategia que puede resolver un gran número de problemas. Normalmente
 la búsqueda binaria está asociada a un arreglo de elementos. Pero en numerosas ocasiones el problema no da una lista de elementos. Sin embargo, la lista de posibles candidatos (el espacio de solución) si es una lista ordenada (monotónica).
@@ -178,11 +184,11 @@ son:
 - Distribuir elementos entre un grupo minimizando el tiempo máximo de espera.
 - Problemas de priorización donde se debe minimizar el tiempo máximo o capacidad.
 
-== Estrategia 2: ¿Puedo resolverlo con Greedy?
+== ¿Puedo resolverlo con Greedy?
 
-== Estrategia 3: ¿Puedo resolverlo con Dynamic Programming?
+== ¿Puedo resolverlo con Dynamic Programming?
 
-== Estrategia 4: ¿Se puede resolver con Descomposición por Raíz Cuadrada?
+== ¿Se puede resolver con Descomposición por Raíz Cuadrada (Square root decomposition)?
 
 == Tips
 

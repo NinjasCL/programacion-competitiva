@@ -1,2 +1,24 @@
-.Teoría
-* xref:arithmetic-progression.adoc[]
+//.Matemáticas
+// Conjuntos
+// Funciones y Propiedades
+// Calculos
+// Funciones Numericas
+// Geometría Analítica
+// Vectores y Espacios de Vectores
+// Matrices
+// Sistemas de Ecuaciones Lineales
+// Operaciones Lineales
+// Ecuaciones
+// Teoría de Números
+// Progresión Arimética
+// Progresiones Geométricas
+// Permutaciones
+// Combinatorias
+// Ecuaciones Cuadráticas
+
+//.Matemáticas Discretas
+// Bitwise
+//
+// https://discrete.openmathbooks.org/dmoi4.html
+// https://openmathbooks.org/what-do-mathematicians-do/frontmatter.html
+// https://textbooks.aimath.org/textbooks/approved-textbooks/
