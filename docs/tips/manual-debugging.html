@@ -85,15 +85,6 @@
   </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Teoría</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../theory/arithmetic-progression.html">Progresiones Aritméticas</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-    <button class="nav-item-toggle"></button>
     <span class="nav-text">Ejercicios Resueltos</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
@@ -146,7 +137,89 @@
 </aside>
 <article class="doc">
 <h1 class="page">Depuración Manual</h1>
+<div class="paragraph">
+<p>En la programación competitiva se priorizan las soluciones
+que requieren menor cantidad de memoria y se ejecuten en un tiempo limitado.</p>
+</div>
+<div class="paragraph">
+<p>Sin embargo por la cantidad de envíos rechazados se puede definir un desempate.
+Es por esto que se recomienda que el código enviado tenga la menor
+cantidad de rechazos posible.</p>
+</div>
+<div class="paragraph">
+<p>Entonces para verificar que la implementación cubre todos los casos
+borde antes de ser enviada, se puede usar la estrategia de depuración manual.</p>
+</div>
+<div class="paragraph">
+<p>La cual consiste en que la persona "simule" ser un compilador e intérprete del código,
+evaluando instrucción por instrucción y anotando sus resultados en una tabla.
+Las herramientas para esto son papel y lápiz, quizás una calculadora.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ejemplo</strong></p>
+</div>
+<div class="paragraph">
+<p>El siguiente ejemplo permite demostrar el uso de la depuración manual.
+En este simple programa se crea una palabra uniendo las letras almacenadas
+en un arreglo.</p>
+</div>
+<div class="listingblock">
+<div class="title">Unir letras</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">palabra = ""
+abecedario = ["a", "b", "c"]
 
+for letra in abecedario:
+  palabra += letra
+
+print(palabra)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Analizamos el bucle utilizando la depuración manual.
+Para cada iteración del bucle <code>for</code> se añade un elemento en la tabla.
+La iteración <code>0</code> corresponde a los valores iniciales de cada variable.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Tabla de Depuración</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Iteración</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">letra</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">palabra</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"a"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">""</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"a"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"a"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"b"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"ab"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"c"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"abc"</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Gracias a esto se puede descubrir problemas en los algoritmos,
+sobre todo cuando hay casos borde que solo se gatillan con valores
+específicos de las variables.</p>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="challenge-types.html">Tipos de Desafíos</a></span>
   <span class="next"><a href="how-to-find-answer.html">¿Cómo encontrar la respuesta?</a></span>
