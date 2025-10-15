@@ -1,0 +1,289 @@
+= 640342A - Búsqueda Chiquita
+
+- Límite de tiempo por prueba: 2 segundos.
+- Límite de memoria por prueba: 4 megabytes.
+- https://codeforces.com/gym/640342[Código Original].
+- Fecha: 4/10/2025.
+- Autor: Gabriel Carmona, TCP 2025
+- Tipo: USA 🇺🇸
+- Dificultad: 🤯 (2900)
+- Tags: implementation
+
+[NOTE]
+====
+NOTA LA INUSUAL MEMORIA LÍMITE DEL PROBLEMA
+====
+
+¡Se abrieron las inscripciones para el Torneo Chileno de Programación (TCP)! Muchas personas se
+registraron para participar. Dentro de la organización está el comité de medición, en el cual trabaja
+Javier. Su tarea es anotar las alturas de los participantes para poder ordenarlos en la foto oficial del TCP.
+
+Martín, encargado de acomodar a las personas en la foto, necesita consultar cuántos participantes tienen
+altura menor que cierta altura. Sin embargo, tiene memoria de pez dorado, así que a veces pregunta
+varias veces por la misma altura.
+
+Javier, consciente de esto, quiere ayudarlo con un sistema de consultas eficiente. Pero como tiene
+problemas de visión, necesita que el sistema guarde todas las alturas usando poco espacio.
+A último minuto, Javier se rompió las manos y no puede diseñar el sistema. Por eso te pide ayuda.
+
+*Entrada*
+
+La primera línea contiene dos enteros asciimath:[n] y asciimath:[q] (asciimath:[1 ≤ n ≤ 3 * 10^6], asciimath:[1 ≤ q ≤ 10^6]), 
+correspondiente a la cantidad de personas inscritas al TCP y la cantidad de consultas realizadas por Martín.
+
+Le sigue una segunda línea que contiene asciimath:[n] enteros separados por un espacio, cada entero tiene valor entre
+asciimath:[1] y asciimath:[3 * 10^6]. Cada entero corresponde a la altura de un participante. Se asegura que todas las alturas son
+distintas.
+
+Finalmente, le siguen asciimath:[q] líneas, donde cada línea contiene un entero correspondiente a la altura consultada
+por Martín. Cada altura consultada puede tener valor entre asciimath:[1] y asciimath:[3 * 10^6].
+
+*Salida*
+
+Por cada consulta, se debe imprimir una línea con un entero, correspondiente a la cantidad de alturas
+menor que la altura consultada.
+
+*Ejemplo*
+
+|====
+|Input | Output
+
+a| 
+[source, text]
+----
+10 4 
+7 2 3 82 70 66 8 13 14 11
+1
+69
+8
+100
+----
+a|
+[source, text]
+----
+0
+8
+3
+10
+----
+|====
+
+[NOTE]
+====
+La entrada/salida de este problema es muy grande, por lo que se recomienda usar técnicas de
+entrada/salida rápida.
+
+En C++: al inicio del programa main deberán escribir: 
+
+- `std::ios::sync_with_stdio(false);`
+- `std::cin.tie(nullptr);`
+====
+
+== Fuerza Bruta en Python
+
+En este intento se implementa sin tener en consideración los límites de 4mb.
+Por lo que no es una solución aceptada. Sin embargo nos permite obtener
+una aproximación al resultado buscado.
+
+Primero se debe ordenar la lista y luego utilizando búsqueda binaria se puede encontrar
+la cantidad de elementos menores al valor buscado.
+
+[source, python]
+----
+include::example$640342a-busqueda-chiquita/solution.py[]
+----
+
+== Solución en C++
+
+La solución requiere de varias diferentes técnicas y conocimientos de operaciones binarias.
+Ya que se debe reducir la cantidad de memoria usada, no se puede utilizar arreglos grandes
+ni operaciones costosas como un `sort`.
+
+Primero la representación de 64 bits de un número. Cualquier número permite ser representado
+en 64 posiciones, es decir un arreglo de 64 elementos que pueden ser `0` o `1`.
+
+Si usamos python podemos realizar esta representación en formato binario con un padding de ceros
+hasta llenar 64 posiciones.
+
+[source, python]
+----
+>>> format(1, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000000000000000001'
+
+>>> format(1024, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000000010000000000'
+
+>>> format(6502, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000001100101100110'
+----
+
+Lo que se tiene que hacer es que se debe almacenar la cantidad de números anteriores
+al número buscado, sin ordenarlos. Para esto hay que saber cómo funciona la representación binaria. 
+Se demostrará con los números del 1 al 10. 
+
+[source, python]
+----
+>>> format(1, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000000000000000001'
+
+>>> format(2, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000000000000000010'
+
+>>> format(3, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000000000000000011'
+
+>>> format(4, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000000000000000100'
+
+>>> format(5, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000000000000000101'
+
+>>> format(6, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000000000000000110'
+
+>>> format(7, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000000000000000111'
+
+>>> format(8, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000000000000001000'
+
+>>> format(9, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000000000000001001'
+
+>>> format(10, 'b').zfill(64)
+'0000000000000000000000000000000000000000000000000000000000001010'
+----
+
+Supongamos que tenemos la siguiente lista de números: 5, 7, 1, 10
+y queremos saber cúantos números hay antes del número 8 en la lista.
+La respuesta correcta sería 3 (1, 5 y 7). Por lo que debemos ver sus representaciones binarias.
+
+- 5: `0101`
+- 7: `0111`
+- 1: `0001`
+- 10: `1010`
+- 8: `1000`
+
+Primero debemos clasificar los números en que página del total de 64 posiciones están almacenados, 
+es decir solo debemos almacenar el contador de la página y su posición dentro de ella, no del número en sí.
+
+Para saber la página debemos dividir el número por 64.
+
+[source, python]
+----
+# // en python es división por integer
+>>> 1024 // 64 
+16
+>>> 1025 // 64
+16
+>>> 1026 // 64
+16
+>>> 1098 // 64
+17
+>>> 1099 // 64
+17
+----
+
+Si buscamos los números de la lista por página encontraremos que están todos 
+en la misma página, por lo que necesitamos tener otra información adicional.
+
+[source, python]
+----
+>>> 5 // 64
+0
+>>> 7 // 64
+0
+>>> 1 // 64
+0
+>>> 10 // 64
+0
+>>> 8 // 64
+0
+----
+
+También debemos saber en qué posición dentro de la página, está el número buscado.
+Para esto utilizamos el operador módulo y obtenemos el restante.
+
+[source, python]
+----
+>>> 1024 % 64
+0
+>>> 1025 % 64
+1
+>>> 1026 % 64
+2
+>>> 1098 % 64
+10
+>>> 1099 % 64
+11
+----
+
+Para el caso buscado la posición dentro de la página es el mismo número, 
+pero esto puede variar como se demostró en el ejemplo anterior.
+
+[source, python]
+----
+>>> 5 % 64
+5
+>>> 7 % 64
+7
+>>> 1 % 64
+1
+>>> 10 % 64
+10
+>>> 8 % 64
+8
+----
+
+Ahora es necesario contar la cantidad de sub total de números que están en cada página.
+Esto contaría el "peso" de cada página según los números entregados.
+
+Para saber esto necesitamos usar la operacion bitwise `<<` la cual permite multiplicar
+un número por su potencia de 2 de forma eficiente. Es decir `1 << n` es lo mismo que decir asciimath:[1 * 2^n].
+asciimath:[n] en este caso sería el asciimath:["número" - 1].
+
+Para obtener el "peso" que tendrá cada número solamente necesitamos multiplicar por un factor de 2 (por ser binario).
+
+[source, python]
+----
+>>> 1 << ((1 - 1) % 64)
+1
+>>> 1 << ((2 - 1) % 64)
+2
+>>> 1 << ((3 - 1) % 64)
+4
+>>> 1 << ((4 - 1) % 64)
+8
+>>> 1 << ((5 - 1) % 64)
+16
+>>> 1 << ((6 - 1) % 64)
+32
+>>> 1 << ((7 - 1) % 64)
+64
+>>> 1 << ((8 - 1) % 64)
+128
+>>> 1 << ((9 - 1) % 64)
+256
+>>> 1 << ((10 - 1) % 64)
+512
+----
+
+Por lo que necesitaríamos las siguientes funciones:
+
+[source, python]
+----
+def pagina_numero(numero):
+  x = numero - 1
+  pagina = x // 64 
+  posicion = x % 64
+  return (pagina, posicion)
+
+def peso_posicion(posicion):
+  return 1 << posicion
+
+def acumular_pagina(acc, numero):
+  pagina, posicion = pagina_numero(numero)
+  peso = peso_posicion(posicion)
+  acc[pagina] += peso
+  return acc
+----

@@ -31,6 +31,18 @@ y permiten practicar para ejercicios de entrevistas laborales.
 Finalmente por que aprender de algoritmos, estructuras de datos y lógica
 matemática son conceptos fundamentales para todo adepto a la informática.
 
+== Tipos 
+
+Los problemas se pueden clasificar según su tipo.
+
+|====
+| Tipo | Descripción
+
+|USA 🇺🇸 | El problema puede parecer sencillo, pero requiere de una implementación compleja o casos borde específicos.
+|Ruso 🇷🇺| El problema requiere de conocimientos matemáticos, lógicos, o científicos para ser resueltos. Normalmente se pueden expresar como ecuaciones o fórmulas.
+|Chino 🇨🇳| El problema require de estructuras de datos o algoritmos avanzados o poco frecuentes para resolverse.
+|====
+
 == Dificultades
 
 Los problemas se pueden clasificar según su dificultad.
